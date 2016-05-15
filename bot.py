@@ -62,15 +62,15 @@ def send_photo(message):
             # read a random result
             img = random.choice(images)
             if kind == '/gif':
-	        # giphy return the urls with a _s 
-	        # wich is the first frame of the gif
-	        # to get the gif remove it.
+                # giphy return the urls with a _s 
+                # wich is the first frame of the gif
+                # to get the gif remove it.
                 img = img.replace('200_s', '200')
                 path_to_img = os.path.join("pics/", tipo[kind][1])
                 bot.send_message(message.chat.id, GETTING_GIF)
                 urllib.urlretrieve(img, path_to_img) 
                 # send gif to telegram
-	        # NOTE: gif must be send as document
+                # NOTE: gif must be send as document
                 photo = open(path_to_img, 'rb')
                 bot.send_document(message.chat.id, photo)
             else:
