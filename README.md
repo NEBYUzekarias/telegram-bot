@@ -13,7 +13,7 @@ The bot will accept 3 commands /photo, /gif, /thougth, /help, /start
 # Requeriments
 
     * python telegram api 
-	[link telegram api](https://github.com/eternnoir/pyTelegramBotAPI)
+	![link telegram api](https://github.com/eternnoir/pyTelegramBotAPI)
 
     * other python libs  
 	beautifulsoup4 
@@ -29,9 +29,9 @@ The bot will accept 3 commands /photo, /gif, /thougth, /help, /start
     
     ** If you are new with telegram bots read
 
-       [link bot](https://core.telegram.org/bots)
+       ![link bot](https://core.telegram.org/bots)
 
-    * Create bot using the botfather [link botfather](https://telegram.me/botfather)
+    * Create bot using the botfather ![link botfather](https://telegram.me/botfather)
     * Add token to line 13 in bot.py
     * Create directory pics/
 
