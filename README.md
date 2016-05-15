@@ -17,7 +17,6 @@ The bot will accept 3 commands /photo, /gif, /thougth, /help, /start
 
     * other python libs  
 	beautifulsoup4 
-	requests
 	urllib2
 	urllib
 

@@ -1,11 +1,9 @@
 import telebot
 from bs4 import BeautifulSoup
-import requests
 import re
 import urllib2
 import urllib
 import os
-import sys
 import random
 import unicodedata
 import subprocess
