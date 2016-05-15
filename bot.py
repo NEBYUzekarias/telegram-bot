@@ -8,7 +8,7 @@ import random
 import unicodedata
 import subprocess
 
-bot = telebot.TeleBot('<YOUR TOKEN HERE>')
+bot = telebot.TeleBot("<YOUR TOKEN HERE>")
 path_to_fortune = "/usr/games/fortune"
 
 # Messages
@@ -22,7 +22,6 @@ def send_welcome(message):
     ''' this function will catch the help command
 	this command will print a little help to screen
 	so users know what commands are availabe'''
-
     bot.send_message(message.chat.id, HELP_MSG)
 
 @bot.message_handler(commands=['photo', 'gif'])
@@ -31,25 +30,27 @@ def send_photo(message):
 	will do the search at the sites and return the
 	image to chat, to do so the function will download the
 	image locally first to send it after.'''
-
+    # params for photo and gif
     tipo = {
         '/photo': ['bing.net', 'image.jpg', 'http://www.bing.com/images/search?q={}&qs=n&form=QBLH&scope=images&sc=9-3&sp=-1'],
         '/gif'  : ['giphy.com', 'image.gif', 'http://giphy.com/search/{}']
     }
-
+    # set kind dependind of tipo
     if message.text.startswith('/photo'):
         kind  = '/photo'
     elif message.text.startswith('/gif'):
         kind  = '/gif'
-
-    image_type = "Action"
+    # get query
     query = message.text.replace(kind+" ", "")
-    # remove accents from query
-    query = remove_accents(query)
+    # when no keywords came the replace does not
+    # match coz there is no space after kind 
+    # and query is eq to kind
     if query != kind:
+        # remove accents from query
+        query = remove_accents(query)
         # set the query and assign it to the url
         query = query.split()
-        query ='+'.join(query)
+        query = '+'.join(query)
         url = tipo[kind][2].format(query)
         # header and request
         header = {'User-Agent': 'Mozilla/5.0'} 
@@ -91,7 +92,6 @@ def send_photo(message):
     ''' this will catch the thought command 
 	and will run the command fortune returning
 	the output to chat '''
-
     output = subprocess.Popen([path_to_fortune], stdout=subprocess.PIPE).communicate()[0]
     bot.send_message(message.chat.id, output)
 
