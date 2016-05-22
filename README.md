@@ -6,7 +6,7 @@ The bot will accept 3 commands /photo, /gif, /thougth, /help, /start
 
     * /photo   [keywords to search] - will do a search at bing and will return a random result
     * /gif     [keywords to search] - will do a search at giphy and will return a random result
-    * /thought - will return the fortune's command output
+    * /thought - will return a random phrase
     * /help    - show help
     * /start   - show help
 
@@ -19,19 +19,22 @@ The bot will accept 3 commands /photo, /gif, /thougth, /help, /start
 	beautifulsoup4 
 	urllib2
 	urllib
-
-    * fortune command
-	root@box:~# apt-get install fortune 	(for aptitude based system)
-	root@box:~# yum install fortune 	(for yum based system) 
+    python-mysql.connector
 
 # Install
     
     ** If you are new with telegram bots read
-
        https://core.telegram.org/bots
 
+    * Install dependecies
     * Create bot using the botfather https://telegram.me/botfather
-    * Add token to line 13 in bot.py
+    * Change the config.py with your parameters
     * Create directory pics/
+    * Create mysql database matching the name at config.py
+    * Run the sql/telebot.sql to create the database to storage phrases
+    * Choose a file from sql/phrases/ and configure it in sql/file2mysql.py
+    * Run sql/file2mysql.py to add phrases from sql/phrases to database
+
+    **NOTE: phrases used here are from fortune command
 
     And that's pretty much it, enjoy.
