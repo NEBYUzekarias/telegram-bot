@@ -3,7 +3,7 @@
 import mysql.connector
 from config import conf
 #
-# Method that will do the mysql stuff
+# Function that will do the mysql stuff
 # 
 # @param whatToDo 
 # @return string
@@ -19,14 +19,14 @@ def _useMysql(whatToDo, param=False):
     dsn     = mysql.connector.connect(**conf['mysql'])
     try:
         cursor  = dsn.cursor()
-        if whatToDo == 'getPhrase':
-            cursor.execute(querys[whatToDo])
-            result  = cursor.fetchone()
-            return result
-        else:
+        if whatToDo == 'insertPhrase':
             cursor.execute(querys[whatToDo], (param,))
             dsn.commit()
             return True
+        else:
+            cursor.execute(querys[whatToDo])
+            result  = cursor.fetchone()
+            return result
     finally:
         cursor.close()
         dsn.close()
