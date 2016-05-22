@@ -2,7 +2,7 @@
 
 Simple python telegram bot using pyTelegramBotAPI
 
-The bot will accept 3 commands /photo, /gif, /thougth, /help, /start
+The bot will accept 5 commands /photo, /gif, /thougth, /help, /start
 
     * /photo   [keywords to search] - will do a search at bing and will return a random result
     * /gif     [keywords to search] - will do a search at giphy and will return a random result
