@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 import mysql.connector
 from config import conf
+from bs4 import BeautifulSoup
+import urllib2
+import unicodedata
 #
 # Function that will do the mysql stuff
 # 
@@ -30,3 +33,21 @@ def _useMysql(whatToDo, param=False):
     finally:
         cursor.close()
         dsn.close()
+#
+# Function that will open/request an url
+#
+# @param url        url to open
+# @param header     headers pass on request
+#
+def _getSoup(url,header):
+    return BeautifulSoup(urllib2.urlopen(urllib2.Request(url,headers=header)))
+#
+# Function that will remove 
+# accents from string
+#
+# @param input_str  string from where the function have to remove accents
+#
+def _removeAccents(input_str):
+    nfkd_form = unicodedata.normalize('NFKD', input_str)
+    only_ascii = nfkd_form.encode('ASCII', 'ignore')
+    return only_ascii

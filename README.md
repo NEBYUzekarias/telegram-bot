@@ -28,7 +28,7 @@ The bot will accept 3 commands /photo, /gif, /thougth, /help, /start
 
     * Install dependecies
     * Create bot using the botfather https://telegram.me/botfather
-    * Change the config.py with your parameters
+    * Rename the config.sample.py to config.py and complete it with your parameters
     * Create directory pics/
     * Create mysql database matching the name at config.py
     * Run the sql/telebot.sql to create the database to storage phrases

@@ -1,13 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import telebot
-from bs4 import BeautifulSoup
 import re
 import urllib2
 import urllib
 import os
 import random
-import unicodedata
 import subprocess
 from config import conf
 import common
@@ -44,14 +42,14 @@ def send_photo(message):
     # and query is eq to kind
     if query != kind:
         # remove accents from query
-        query = remove_accents(query)
+        query = common._removeAccents(query)
         # set the query and assign it to the url
         query = query.split()
         query = '+'.join(query)
         url = tipo[kind][2].format(query)
         # header and request
         header = {'User-Agent': 'Mozilla/5.0'} 
-        soup = get_soup(url,header)
+        soup = common._getSoup(url,header)
         images = [a['src'] for a in soup.find_all("img", {"src": re.compile(tipo[kind][0])})]
         # if result
         if images:
@@ -90,16 +88,6 @@ def send_msg(message):
 	and will return random phrase from mysql'''
     output = common._useMysql('getPhrase')
     bot.send_message(message.chat.id, output)
-
-def get_soup(url,header):
-    ''' open url and make the request '''
-    return BeautifulSoup(urllib2.urlopen(urllib2.Request(url,headers=header)))
-
-def remove_accents(input_str):
-    ''' remove accents from input'''
-    nfkd_form = unicodedata.normalize('NFKD', input_str)
-    only_ascii = nfkd_form.encode('ASCII', 'ignore')
-    return only_ascii
 
 # let's bot
 bot.polling()
