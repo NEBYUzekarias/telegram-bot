@@ -13,18 +13,22 @@ import common
 bot = telebot.TeleBot(conf['telegram_token'])
 
 @bot.message_handler(commands=['help', 'start'])
+#
+# this function will catch the help command
+# this command will print a little help to screen
+# so users know what commands are availabe
+#
 def send_welcome(message):
-    ''' this function will catch the help command
-	this command will print a little help to screen
-	so users know what commands are availabe'''
     bot.send_message(message.chat.id, conf['help_msg'])
 
 @bot.message_handler(commands=['photo', 'gif'])
+#
+# this function will catch the commands photo and gif,
+# will do the search at the sites and return the
+# image to chat, to do so the function will download the
+# image locally first to send it after.
+#
 def send_photo(message):
-    ''' this function will catch the commands photo and gif,
-	will do the search at the sites and return the
-	image to chat, to do so the function will download the
-	image locally first to send it after.'''
     # params for photo and gif
     tipo = {
         '/photo': ['bing.net', 'image.jpg', 'http://www.bing.com/images/search?q={}&qs=n&form=QBLH&scope=images&sc=9-3&sp=-1'],
@@ -83,9 +87,11 @@ def send_photo(message):
         bot.send_message(message.chat.id, conf['msg_on_empty_query'].format(kind))
 
 @bot.message_handler(commands=['thought'])
+#
+# this will catch the thought command 
+# and will return random phrase from mysql
+# 
 def send_msg(message):
-    ''' this will catch the thought command 
-	and will return random phrase from mysql'''
     output = common._useMysql('getPhrase')
     bot.send_message(message.chat.id, output)
 
