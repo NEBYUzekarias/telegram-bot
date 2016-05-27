@@ -9,7 +9,7 @@ import unicodedata
 # Function that will do the mysql stuff
 # 
 # @param whatToDo 
-# @return string
+# @return mixed
 #
 def _useMysql(whatToDo, param=False):
     querys  = { 
