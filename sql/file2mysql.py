@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + '/..')
 import common
 
 # CHANGE HERE THE NAME OF FILE THAT
-# YOU WANT TO IMPORT TO MYSQL
+# this is the part that we replace with our data 
 file_to_import = '/home/neba/Documents/projects/telegram/telegram-bot/sql/phrases/art'
 
 #

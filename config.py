@@ -3,7 +3,7 @@ conf = {
     'msg_on_empty_query' : 'hey, forgot the query, command is: {} keywords',
     'no_results'         : 'did\'t find anything',
     'getting_gif'        : 'found it, hang on a sec',
-    'help_msg'           : '/photo keywords - find image \n/gif keywords - find gif\n/thought - print a fortune\n/help - show help',
+    'help_msg'           : '/thought - print a fortune\n/help - show help',
     'mysql'     : {                                                
         'user'         : 'root',                             #mysql user
         'password'     : '26535986',                             #mysql password
