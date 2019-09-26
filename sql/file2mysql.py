@@ -7,7 +7,7 @@ import common
 
 # CHANGE HERE THE NAME OF FILE THAT
 # YOU WANT TO IMPORT TO MYSQL
-file_to_import = 'phrases/linux'
+file_to_import = '/home/neba/Documents/projects/telegram/telegram-bot/sql/phrases/art'
 
 #
 # Import the phrases that you want to

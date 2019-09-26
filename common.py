@@ -3,7 +3,7 @@
 import mysql.connector
 from config import conf
 from bs4 import BeautifulSoup
-import urllib2
+import urllib.request as urllib2
 import unicodedata
 #
 # Function that will do the mysql stuff
@@ -11,11 +11,12 @@ import unicodedata
 # @param whatToDo 
 # @return mixed
 #
-def _useMysql(whatToDo, param=False):
+def _useMysql(whatToDo,id,  param=False):
     querys  = { 
             # This example works fine and is fast if you only when let's say 5000 rows. 
             # As soon as you have 10000 rows the overhead for sorting the rows becomes important.
-            'getPhrase' :   "SELECT phrase FROM phraseList ORDER BY RAND() LIMIT 1",
+            # 'getPhrase' :   "SELECT phrase FROM phraseList ORDER BY RAND() LIMIT 1",
+            'getPhrase' :   "SELECT phrase FROM phraseList WHERE id = ",
             'insertPhrase': "INSERT INTO phraseList (phrase) VALUE(%s)",
     }
     # connects to db
@@ -27,7 +28,7 @@ def _useMysql(whatToDo, param=False):
             dsn.commit()
             return True
         else:
-            cursor.execute(querys[whatToDo])
+            cursor.execute(querys[whatToDo]+ id )
             result  = cursor.fetchone()
             return result
     finally:
@@ -40,7 +41,9 @@ def _useMysql(whatToDo, param=False):
 # @param header     headers pass on request
 #
 def _getSoup(url,header):
-    return BeautifulSoup(urllib2.urlopen(urllib2.Request(url,headers=header)))
+    some = urllib2.Request(url,headers=header)
+    some = urllib2.urlopen(some)
+    return BeautifulSoup(some)
 #
 # Function that will remove 
 # accents from string
