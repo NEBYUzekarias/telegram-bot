@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 import telebot
 import re
-import urllib
 import os
 import random
 import subprocess

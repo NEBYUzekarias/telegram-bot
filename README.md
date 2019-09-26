@@ -15,9 +15,7 @@ The bot will accept 3 commands /thougth, /help, /start
 	https://github.com/eternnoir/pyTelegramBotAPI
 
     * other python libs  
-	beautifulsoup4 
-	urllib2
-	urllib
+
     python-mysql.connector
 
 # Install

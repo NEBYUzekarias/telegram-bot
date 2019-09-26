@@ -1,5 +1,5 @@
 conf = {
-    'telegram_token'     : '780961097:AAHcGlPrEruUHuwjPhdU5gxeUFun7dbFB4Q',
+    'telegram_token'     : 'token',
     'msg_on_empty_query' : 'hey, forgot the query, command is: {} keywords',
     'no_results'         : 'did\'t find anything',
     'getting_gif'        : 'found it, hang on a sec',
